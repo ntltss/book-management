@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# 画像一時保管用
+/images
+
 # dependencies
 /node_modules
 /.pnp
