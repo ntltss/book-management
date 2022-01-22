@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Grid, Card, CardContent, IconButton, Typography, CardHeader } from "@material-ui/core"
+import { Box, Grid, Card, CardContent, IconButton, Typography, CardHeader, Divider } from "@material-ui/core"
 import { grey } from "@material-ui/core/colors"
 import { InfoOutlined } from "@material-ui/icons"
 
@@ -14,7 +14,7 @@ const List = () => {
       {itemData.map((item) => (
         <>
         <Grid item key={item.img}>
-          <Card style={{backgroundColor: grey[300]}}>
+          <Card style={{backgroundColor: grey[300]}} key={item.img}>
             <CardHeader action={
               <IconButton
                 aria-label={`info about ${item.title}`}
@@ -33,6 +33,7 @@ const List = () => {
               </Typography>
             }
             />
+            <Divider />
             <CardContent>
               <img
                 src={`${item.img}`}
