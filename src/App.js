@@ -1,10 +1,13 @@
 import React from "react"
 import CardList from "./component/pages/CardList";
+import { Auth } from "./store/auth"
 
 const App = () => {
   return(
     <>
-      <CardList />
+      <Auth>
+        <CardList />
+      </Auth>
     </>
   )
 }
