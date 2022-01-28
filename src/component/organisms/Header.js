@@ -4,7 +4,6 @@ import {
     AppBar,
     Toolbar,
     Typography,
-    Button,
     IconButton,
  } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'

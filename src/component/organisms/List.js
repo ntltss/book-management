@@ -1,7 +1,23 @@
 import React from "react"
-import { Box, Grid, Card, CardContent, IconButton, Typography, CardHeader, Divider } from "@material-ui/core"
-import { grey } from "@material-ui/core/colors"
-import { InfoOutlined } from "@material-ui/icons"
+import {
+  Box,
+  Grid,
+  Typography,
+  Divider 
+} from "@material-ui/core"
+import BusinessCard from "../molecules/BusinessCard"
+
+const actions = [
+  {
+    title: "名刺を編集",
+    color: "inherit",
+    to: "/cards/edit",
+  },
+  {
+    title: "名刺を削除",
+    color: "error",
+  },
+]
 
 const List = () => {
   return (
@@ -9,43 +25,11 @@ const List = () => {
     <Box px={12} py={10}>
       <Typography style={{fontSize: 20}}>あなたが現在所持している名刺</Typography>
     </Box>
-    <Box>
+    <Divider />
+    <Box p={2}>
     <Grid container alignItems="center" justifyContent="center" spacing={3}>
       {itemData.map((item) => (
-        <>
-        <Grid item key={item.img}>
-          <Card style={{backgroundColor: grey[300]}} key={item.img}>
-            <CardHeader action={
-              <IconButton
-                aria-label={`info about ${item.title}`}
-              >
-                <InfoOutlined style={{ color: grey[50] }}/>
-              </IconButton>
-            } 
-            title={
-              <Typography>
-                {item.title}
-              </Typography>
-            }
-            subheader={
-              <Typography>
-                {item.author}
-              </Typography>
-            }
-            />
-            <Divider />
-            <CardContent>
-              <img
-                src={`${item.img}`}
-                srcSet={`${item.img}`}
-                alt={item.title}
-                width={300}
-                loading="lazy"
-              />
-            </CardContent>
-          </Card>
-        </Grid>
-        </>
+        <BusinessCard actions={actions} item={item} key={item.title}/>
       ))}
     </Grid>
     </Box>
