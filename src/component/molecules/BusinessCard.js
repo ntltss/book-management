@@ -7,9 +7,10 @@ import {
   Typography,
   CardHeader,
   Divider, 
+  Paper,
 } from "@material-ui/core"
 import { grey } from "@material-ui/core/colors"
-import { InfoOutlined } from "@material-ui/icons"
+import { MoreVert } from "@material-ui/icons"
 import LongMenu from "./LongMenu"
 
 const BusinessCard = ({
@@ -30,47 +31,49 @@ const BusinessCard = ({
 
   return (
     <>
-    <Grid item key={item.img}>
-      <Card style={{backgroundColor: grey[300]}} key={item.img}>
-        <CardHeader action={
-          <IconButton
-            id={`info about ${item.title}`}
-            aria-label={`info about ${item.title}`}
-            ref={anchorRef}
-            onClick={handleToggle}
-          >
-            <InfoOutlined style={{ color: grey[50] }}/>
-          </IconButton>
-        } 
-        title={
-          <Typography>
-            {item.title}
-          </Typography>
-        }
-        subheader={
-          <Typography>
-            {item.author}
-          </Typography>
-        }
-        />
-        <Divider />
-        <CardContent>
-          <img
-            src={`${item.img}`}
-            srcSet={`${item.img}`}
-            alt={item.title}
-            width={300}
-            loading="lazy"
-          />
-        </CardContent>
-      </Card>
-    </Grid>
-    <LongMenu
-      anchorEl={anchorRef.current}
-      actions={actions}
-      open={open}
-      handleClose={handleClose}
-    />
+      <Grid item key={item.img}>
+        <Paper>
+          <Card style={{backgroundColor: grey[50]}} key={item.img}>
+            <CardHeader action={
+              <IconButton
+                id={`info about ${item.title}`}
+                aria-label={`info about ${item.title}`}
+                ref={anchorRef}
+                onClick={handleToggle}
+              >
+                <MoreVert style={{ color: grey[600] }}/>
+              </IconButton>
+            } 
+            title={
+              <Typography>
+                {item.title}
+              </Typography>
+            }
+            subheader={
+              <Typography>
+                {item.author}
+              </Typography>
+            }
+            />
+            <Divider />
+            <CardContent>
+              <img
+                src={`${item.img}`}
+                srcSet={`${item.img}`}
+                alt={item.title}
+                width={300}
+                loading="lazy"
+              />
+            </CardContent>
+          </Card>
+        </Paper>
+      </Grid>
+      <LongMenu
+        anchorEl={anchorRef.current}
+        actions={actions}
+        open={open}
+        handleClose={handleClose}
+      />
     </>
   )
 }
