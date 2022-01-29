@@ -1,5 +1,5 @@
 import React from "react"
-import CardList from "./component/pages/CardList";
+import CardList from "./components/pages/CardList";
 import { Auth } from "./store/auth"
 
 const App = () => {
