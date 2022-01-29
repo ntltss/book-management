@@ -1,0 +1,56 @@
+name: develop CI
+
+on: 
+  push:
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  Lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run eslint
+    # TODO テスト追加次第、以下を実行させる
+    # - run: npm run test
+    
+  # TODO AWSのコンテナサービス上にbuildできるようにする
+  # build:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       node-version: [16.x]
+  #       # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Use Node.js ${{ matrix.node-version }}
+  #     uses: actions/setup-node@v2
+  #     with:
+  #       node-version: ${{ matrix.node-version }}
+  #       cache: 'npm'
+  #   - run: npm ci
+  #   - run: npm run build --if-present
+  #   - run: npm test
+
+  # TODO Slackに通知を飛ばせるようにする
+  # Notification:
+  #   runs-on: ubuntu-latest
+  #   needs: Lint
+  #   steps:
+  #   - uses: sarisia/actions-status-discord@v1
+  #     if: always()
+  #     with:
+  #       webhook: ${{ secrets.DISCORD_WEBHOOK }}
+  #       username: Github Actions (Topic)
+  #       status: ${{ needs.Lint.result }}
