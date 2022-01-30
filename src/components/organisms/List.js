@@ -9,9 +9,9 @@ import BusinessCard from "../molecules/BusinessCard"
 
 const actions = [
   {
-    title: "名刺を編集",
+    title: "詳細を見る",
     color: "inherit",
-    to: "/cards/edit",
+    to: "/cards",
   },
   {
     title: "名刺を削除",
