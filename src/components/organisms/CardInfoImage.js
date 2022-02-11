@@ -6,17 +6,17 @@ const CardInfoImage = ({
 }) => {
   return (
     <>
-      <Box p={2} justifyContent={"center"}>
-        <Paper>
+      <Paper>
+        <Box ml={4} py={4}>
           <img
             src={`${item.img}`}
             srcSet={`${item.img}`}
             alt={item.title}
-            width={400}
+            width={'90%'}
             loading="lazy"
           />
-        </Paper>
-      </Box>
+        </Box>
+      </Paper>
     </>
   )
 }

@@ -1,31 +1,36 @@
 import {
   Box,
+  Grid,
   Paper,
   Typography,
 } from "@material-ui/core"
 import React from "react"
 
 const CardInfoDetail = ({
-  item = {},
+  items = {},
 }) => {
   return (
     <>
-      <Box p={2} justifyContent={"center"}>
-        <Paper>
-          <Box pl={3} py={1}>
-            <Typography variant="subtitle2">{item.author}</Typography>
-          </Box>
-          <Box pl={3} py={1}>
-            <Typography variant="subtitle2">{item.title}</Typography>
-          </Box>
-          <Box pl={3} py={1}>
-            <Typography variant="subtitle2">{item.companyTel}</Typography>
-          </Box>
-          <Box pl={3} py={1}>
-            <Typography variant="subtitle2">{item.mail}</Typography>
-          </Box>
-        </Paper>
-      </Box>
+      <Paper>
+        <Box pl={2}>
+          <Grid container>
+            <Grid item>
+              {items.map((item) => (
+                <Box pl={4} py={2}>
+                  <Typography variant="subtitle2">{item.key}</Typography>
+                </Box>
+              ))}
+            </Grid>
+            <Grid item>
+              {items.map((item) => (
+                <Box pl={4} py={2}>
+                  <Typography variant="subtitle2">{item.value}</Typography>
+                </Box>
+              ))}
+            </Grid>
+          </Grid>
+        </Box>
+      </Paper>
     </>
   )
 }
