@@ -1,4 +1,5 @@
-import { Grid, Box, Typography, Divider } from "@material-ui/core"
+import { Grid, Box, Typography, Divider, Button } from "@material-ui/core"
+import { Edit } from "@material-ui/icons"
 import React from "react"
 import CardInfoDetail from "./CardInfoDetail"
 import CardInfoImage from "./CardInfoImage"
@@ -42,8 +43,35 @@ const CardInfo = () => {
     <>
     <Box pt={8} px={3}>
       <Box p={3}>
-        <Typography variant="h6">名刺の詳細</Typography>
+        <Grid container justify="space-between">
+          <Grid item>
+            <Typography variant="h6">名刺の詳細</Typography>
+          </Grid>
+          <Grid item>
+            <Grid container spacing={3} justify="flex-end">
+              <Grid item>
+                <Button
+                  color="primary"
+                  variant="contained"
+                  endIcon={<Edit/>}
+                >
+                  編集する
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  endIcon={<Edit/>}
+                >
+                  削除する
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
       </Box>
+      
       <Divider />
       <Box pt={3}>
         <Grid container spacing={3}>
