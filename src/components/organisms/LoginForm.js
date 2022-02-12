@@ -38,6 +38,7 @@ const LoginForm = () => {
           </Box>
           <Box my={2}>
             <Button 
+              color="primary"
               variant="contained"
               component={Link}
               to="/cards"
