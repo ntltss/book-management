@@ -9,10 +9,13 @@ import {
   Typography,
 } from "@material-ui/core"
 
+import { Link } from "react-router-dom"
+
 const LongMenu = ({
   open = false,
   actions = [],
   anchorEl = [],
+  item = {},
   handleClose = () => {},
 }) => {
   return (
@@ -38,6 +41,8 @@ const LongMenu = ({
                     <MenuItem 
                       key={action.title}
                       onClose={handleClose}
+                      component={Link}
+                      to={`${action.to}/${item.title}`}
                     >
                       <Typography color={action.color}>{action.title}</Typography>
                     </MenuItem>

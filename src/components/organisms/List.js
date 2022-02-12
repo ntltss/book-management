@@ -9,9 +9,9 @@ import BusinessCard from "../molecules/BusinessCard"
 
 const actions = [
   {
-    title: "名刺を編集",
+    title: "詳細を見る",
     color: "inherit",
-    to: "/cards/edit",
+    to: "/cards",
   },
   {
     title: "名刺を削除",
@@ -22,17 +22,19 @@ const actions = [
 const List = () => {
   return (
     <>
-    <Box px={12} py={10}>
-      <Typography style={{fontSize: 20}}>あなたが現在所持している名刺</Typography>
-    </Box>
-    <Divider />
-    <Box p={2}>
-    <Grid container alignItems="center" justifyContent="center" spacing={3}>
-      {itemData.map((item) => (
-        <BusinessCard actions={actions} item={item} key={item.title}/>
-      ))}
-    </Grid>
-    </Box>
+      <Box px={6} pt={8}>
+        <Box py={3}>
+          <Typography variant="h6">あなたが現在所持している名刺</Typography>
+        </Box>
+        <Divider />
+        <Box p={2}>
+          <Grid container alignItems="center" justifyContent="center" spacing={3}>
+            {itemData.map((item) => (
+              <BusinessCard actions={actions} item={item} key={item.title}/>
+            ))}
+          </Grid>
+        </Box>
+      </Box>
     </>
   )
 }
