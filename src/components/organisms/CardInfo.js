@@ -73,7 +73,7 @@ const CardInfo = () => {
       </Box>
       
       <Divider />
-      <Box pt={3}>
+      <Box pt={3} px={6}>
         <Grid container spacing={3}>
           <Grid item xs={6}>
             <CardInfoImage item={itemData}/>
