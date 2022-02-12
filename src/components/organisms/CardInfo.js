@@ -1,5 +1,5 @@
 import { Grid, Box, Typography, Divider, Button } from "@material-ui/core"
-import { Edit } from "@material-ui/icons"
+import { Delete, Edit } from "@material-ui/icons"
 import React from "react"
 import CardInfoDetail from "./CardInfoDetail"
 import CardInfoImage from "./CardInfoImage"
@@ -62,7 +62,7 @@ const CardInfo = () => {
                 <Button
                   color="secondary"
                   variant="contained"
-                  endIcon={<Edit/>}
+                  endIcon={<Delete/>}
                 >
                   削除する
                 </Button>
