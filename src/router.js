@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react"
 import {BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import CardEdit from "./components/pages/CardEdit"
 
 const Login = lazy(() => import("./components/pages/Login"))
 const CardList = lazy(() => import("./components/pages/CardList"))
@@ -14,6 +15,7 @@ const App = () => {
             <Route exact path="/" element={<Login/>} />
             <Route exact path="/cards" element={<CardList/>} />
             <Route exact path="/cards/:cardId" element={<CardDetail/>} />
+            <Route exact path="/cards/:cardId/edit" element={<CardEdit/>} />
           </Routes>
         </Suspense>
       </Router>
