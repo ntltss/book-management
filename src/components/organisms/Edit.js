@@ -1,9 +1,15 @@
-import { Grid, Box, Typography, Divider, Button } from "@material-ui/core"
+import {
+  Grid,
+  Box,
+  Typography,
+  Divider,
+  Button,
+} from "@material-ui/core"
 import { Check, Close } from "@material-ui/icons"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import CardInfoDetail from "./CardInfoDetail"
-import CardInfoImage from "./CardInfoImage"
+import CardInfoImageSelector from "../../components/molecules/CardInfoImageSelector"
 
 const itemData = {
   img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
@@ -18,26 +24,57 @@ const itemData = {
 
 const Edit = () => {
   const { cardId } = useParams()
+
+  const [image, setImage] = useState("")
+  const [companyName, setCompanyName] = useState("")
+  const [sectionPosition, setSectionPosition] = useState("")
+  const [nameLast, setNameLast] = useState("")
+  const [nameFirst, setNameFirst] = useState("")
+  const [companyTel, setCompanyTel] = useState("")
+  const [mail, setMail] = useState("")
+
+  useEffect(() => {
+    setImage(itemData.img)
+    setCompanyName(itemData.companyName)
+    setSectionPosition(itemData.sectionPosition)
+    setNameLast(itemData.nameLast)
+    setNameFirst(itemData.nameFirst)
+    setCompanyTel(itemData.companyTel)
+    setMail(itemData.mail)
+  }, [])
+
   const detailList = [
     {
       key: "会社名",
-      value: itemData.companyName,
+      value: companyName,
+      setValue: setCompanyName
     },
     {
       key: "所属部署・職位",
-      value: itemData.sectionPosition,
+      value: sectionPosition,
+      setValue: setSectionPosition
     },
     {
       key: "氏名",
-      value: `${itemData.nameLast} ${itemData.nameFirst}`,
+      value: nameLast,
+      setValue: setNameLast,
+      isFlex: true,
+    },
+    {
+      key: "氏名",
+      value: nameFirst,
+      setValue: setNameFirst,
+      isFlex: true,
     },
     {
       key: "会社連絡先",
-      value: itemData.companyTel,
+      value: companyTel,
+      setValue: setCompanyTel
     },
     {
       key: "メールアドレス",
-      value: itemData.mail,
+      value: mail,
+      setValue: setMail
     },
   ]
 
@@ -80,7 +117,7 @@ const Edit = () => {
       <Box pt={3} px={6}>
         <Grid container spacing={3}>
           <Grid item xs={6}>
-            <CardInfoImage item={itemData}/>
+            <CardInfoImageSelector image={image} setImage={setImage}/>
           </Grid>
           <Grid item xs={6}>
             <CardInfoDetail items={detailList}/>

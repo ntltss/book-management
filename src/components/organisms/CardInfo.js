@@ -80,7 +80,7 @@ const CardInfo = () => {
       <Box pt={3} px={6}>
         <Grid container spacing={3}>
           <Grid item xs={6}>
-            <CardInfoImage item={itemData}/>
+            <CardInfoImage img={itemData.img}/>
           </Grid>
           <Grid item xs={6}>
             <CardInfoDetail items={detailList}/>
