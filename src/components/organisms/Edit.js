@@ -8,7 +8,7 @@ import {
 import { Check, Close } from "@material-ui/icons"
 import React, { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import CardInfoDetail from "./CardInfoDetail"
+import CardInfoEdit from "./CardInfoEdit"
 import CardInfoImageSelector from "../../components/molecules/CardInfoImageSelector"
 
 const itemData = {
@@ -55,13 +55,13 @@ const Edit = () => {
       setValue: setSectionPosition
     },
     {
-      key: "氏名",
+      key: "氏名（姓）",
       value: nameLast,
       setValue: setNameLast,
       isFlex: true,
     },
     {
-      key: "氏名",
+      key: "氏名（名）",
       value: nameFirst,
       setValue: setNameFirst,
       isFlex: true,
@@ -120,7 +120,7 @@ const Edit = () => {
             <CardInfoImageSelector image={image} setImage={setImage}/>
           </Grid>
           <Grid item xs={6}>
-            <CardInfoDetail items={detailList}/>
+            <CardInfoEdit items={detailList}/>
           </Grid>
         </Grid>
       </Box>
