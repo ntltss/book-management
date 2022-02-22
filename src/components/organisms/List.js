@@ -1,10 +1,12 @@
-import React from "react"
 import {
   Box,
   Grid,
   Typography,
-  Divider 
+  Divider, 
+  Fab
 } from "@material-ui/core"
+import { Add } from "@material-ui/icons"
+import React from "react"
 import BusinessCard from "../molecules/BusinessCard"
 
 const actions = [
@@ -24,7 +26,7 @@ const List = () => {
     <>
       <Box px={6} pt={8}>
         <Box py={3}>
-          <Typography variant="h6">あなたが現在所持している名刺</Typography>
+          <Typography variant="h6">所持している名刺</Typography>
         </Box>
         <Divider />
         <Box p={2}>
@@ -35,6 +37,17 @@ const List = () => {
           </Grid>
         </Box>
       </Box>
+      <Fab
+        color="primary"
+        style={{
+          position: "fixed",
+          top: "70px",
+          right: "30px",
+        }}
+        href={"/cards/add"}
+      >
+        <Add />
+      </Fab>
     </>
   )
 }
