@@ -2,17 +2,17 @@ import { Box, Paper } from "@material-ui/core"
 import React from "react"
 
 const CardInfoImage = ({
-  item = {},
+  img = {},
 }) => {
   return (
     <>
       <Paper>
-        <Box ml={4} py={4}>
+        <Box mx={2} py={2} style={{maxWidth: 448}}>
           <img
-            src={`${item.img}`}
-            srcSet={`${item.img}`}
-            alt={item.title}
-            width={'90%'}
+            src={`${img}`}
+            srcSet={`${img}`}
+            alt={img}
+            width={'100%'}
             loading="lazy"
           />
         </Box>

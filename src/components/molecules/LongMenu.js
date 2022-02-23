@@ -8,8 +8,7 @@ import {
   ClickAwayListener,
   Typography,
 } from "@material-ui/core"
-
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const LongMenu = ({
   open = false,
@@ -18,6 +17,8 @@ const LongMenu = ({
   item = {},
   handleClose = () => {},
 }) => {
+  const navigate = useNavigate()
+
   return (
     <Popper
       open={open}
@@ -38,11 +39,13 @@ const LongMenu = ({
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList onClose={handleClose}>
                   {actions.map((action) => (
-                    <MenuItem 
+                    <MenuItem
                       key={action.title}
                       onClose={handleClose}
-                      component={Link}
-                      to={`${action.to}/${item.title}`}
+                      onClick={() => {
+                        action?.to && navigate(`${action.to}/${item.title}`)
+                        action?.onClick && action.onClick()
+                      }}
                     >
                       <Typography color={action.color}>{action.title}</Typography>
                     </MenuItem>

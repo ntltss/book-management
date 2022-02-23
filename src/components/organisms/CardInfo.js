@@ -1,6 +1,7 @@
 import { Grid, Box, Typography, Divider, Button } from "@material-ui/core"
 import { Delete, Edit } from "@material-ui/icons"
 import React from "react"
+import { Link, useParams } from "react-router-dom"
 import CardInfoDetail from "./CardInfoDetail"
 import CardInfoImage from "./CardInfoImage"
 
@@ -16,6 +17,7 @@ const itemData = {
 }
 
 const CardInfo = () => {
+  const { cardId } = useParams()
   const detailList = [
     {
       key: "会社名",
@@ -54,6 +56,8 @@ const CardInfo = () => {
                   color="primary"
                   variant="contained"
                   endIcon={<Edit/>}
+                  component={Link}
+                  to={`/cards/${cardId}/edit`}
                 >
                   編集する
                 </Button>
@@ -73,12 +77,12 @@ const CardInfo = () => {
       </Box>
       
       <Divider />
-      <Box pt={3} px={6}>
-        <Grid container spacing={3}>
-          <Grid item xs={6}>
-            <CardInfoImage item={itemData}/>
+      <Box pt={3}>
+        <Grid container spacing={3} justify="space-evenly">
+          <Grid item>
+            <CardInfoImage img={itemData.img}/>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item>
             <CardInfoDetail items={detailList}/>
           </Grid>
         </Grid>
