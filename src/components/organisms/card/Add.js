@@ -9,7 +9,7 @@ import { Check, Close } from "@material-ui/icons"
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import CardInfoEdit from "./CardInfoEdit"
-import CardInfoImageSelector from "../molecules/CardInfoImageSelector"
+import CardInfoImageSelector from "../../molecules/CardInfoImageSelector"
 
 const Add = () => {
   const [image, setImage] = useState("")

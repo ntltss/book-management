@@ -6,6 +6,7 @@ import CardInfoDetail from "./CardInfoDetail"
 import CardInfoImage from "./CardInfoImage"
 
 const itemData = {
+  cardId: "m8HmMRHRXi",
   img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
   companyName: '株式会社Breakfast',
   sectionPosition: '営業部 副部長',

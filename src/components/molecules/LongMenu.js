@@ -26,6 +26,7 @@ const LongMenu = ({
       placement="bottom-end"
       transition
       disablePortal
+      style={{zIndex: 10000}}
     >
       {({ TransitionProps, placement }) => (
         <Grow
@@ -43,7 +44,7 @@ const LongMenu = ({
                       key={action.title}
                       onClose={handleClose}
                       onClick={() => {
-                        action?.to && navigate(`${action.to}/${item.title}`)
+                        action?.to && navigate(action.to)
                         action?.onClick && action.onClick()
                       }}
                     >

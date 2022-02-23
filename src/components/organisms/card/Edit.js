@@ -9,7 +9,7 @@ import { Check, Close } from "@material-ui/icons"
 import React, { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import CardInfoEdit from "./CardInfoEdit"
-import CardInfoImageSelector from "../../components/molecules/CardInfoImageSelector"
+import CardInfoImageSelector from "../../../components/molecules/CardInfoImageSelector"
 
 const itemData = {
   img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
