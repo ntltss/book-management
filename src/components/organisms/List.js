@@ -8,7 +8,6 @@ import {
 import { Add } from "@material-ui/icons"
 import React from "react"
 import BusinessCard from "../molecules/BusinessCard"
-
 const actions = [
   {
     title: "詳細を見る",
@@ -18,6 +17,7 @@ const actions = [
   {
     title: "名刺を削除",
     color: "error",
+    onClick: () => {},
   },
 ]
 
