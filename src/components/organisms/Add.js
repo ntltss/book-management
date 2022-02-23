@@ -89,12 +89,12 @@ const Add = () => {
       </Box>
       
       <Divider />
-      <Box pt={3} px={6}>
-        <Grid container spacing={3}>
-          <Grid item xs={6}>
+      <Box pt={3}>
+        <Grid container spacing={3}  justify="space-evenly">
+          <Grid item>
             <CardInfoImageSelector image={image} setImage={setImage}/>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item>
             <CardInfoEdit items={detailList}/>
           </Grid>
         </Grid>

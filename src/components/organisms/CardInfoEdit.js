@@ -13,11 +13,11 @@ const CardInfoEdit = ({
   return (
     <>
       <Paper>
-        <Box pl={2}>
+        <Box py={4}>
           <Grid container>
             <Grid item>
               {items.map((item) => (
-                <Box pl={4} py={2}>
+                <Box px={4}>
                   <Grid container spacing={2} justify="space-between" alignItems="center">
                     <Grid item>
                       <Typography

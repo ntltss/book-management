@@ -1,5 +1,5 @@
-import { Button } from "@material-ui/core"
-import { PictureInPicture } from "@material-ui/icons"
+import { Box, Button } from "@material-ui/core"
+import { Panorama } from "@material-ui/icons"
 import React from "react"
 import CardInfoImage from "../organisms/CardInfoImage"
 
@@ -10,7 +10,8 @@ const CardInfoImageSelector = ({
   return (
     <>
       <CardInfoImage img={image}/>
-        <Button variant="outlined" component="label" endIcon={<PictureInPicture />}>
+      <Box py={2}>
+        <Button variant="contained" component="label" endIcon={<Panorama />}>
           画像を更新
           <input
             accept="image/*"
@@ -23,6 +24,7 @@ const CardInfoImageSelector = ({
             }}
           />
         </Button>
+      </Box>        
     </>
   )
 }

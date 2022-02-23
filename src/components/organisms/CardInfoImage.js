@@ -7,12 +7,12 @@ const CardInfoImage = ({
   return (
     <>
       <Paper>
-        <Box ml={4} py={4}>
+        <Box mx={2} py={2} style={{maxWidth: 448}}>
           <img
             src={`${img}`}
             srcSet={`${img}`}
             alt={img}
-            width={'90%'}
+            width={'100%'}
             loading="lazy"
           />
         </Box>
