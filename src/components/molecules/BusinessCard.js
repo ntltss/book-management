@@ -72,6 +72,7 @@ const BusinessCard = ({
         anchorEl={anchorRef.current}
         actions={actions}
         open={open}
+        item={item}
         handleClose={handleClose}
       />
     </>

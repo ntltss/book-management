@@ -4,19 +4,14 @@ import {
     AppBar,
     Toolbar,
     Typography,
-    IconButton,
+    Button,
+    Grid,
+    Avatar,
  } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minHeight: "30px",
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
+    minHeight: "50px",
   },
 }));
 
@@ -26,12 +21,21 @@ const Header = () => {
         <>
       <AppBar position="fixed">
         <Toolbar className={classes.root}>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            e名刺 -電子名刺システム-
-          </Typography>
+          <Grid container justify='space-between'>
+            <Grid item>
+              <Typography variant="h6">
+                e名刺
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Button color="inherit" variant='text'>
+                <Avatar style={{width: 24, height: 24, marginRight: 16}}>{"山"}</Avatar>
+                <Typography>
+                  {"user"}さん
+                </Typography>
+              </Button>
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
       </>
