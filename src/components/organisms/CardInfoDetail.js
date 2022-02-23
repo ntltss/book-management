@@ -12,11 +12,11 @@ const CardInfoDetail = ({
   return (
     <>
       <Paper>
-        <Box pl={2}>
+        <Box p={4}>
           <Grid container>
             <Grid item>
               {items.map((item) => (
-                <Box pl={4} py={2}>
+                <Box py={2}>
                   <Typography variant="subtitle2">{item.key}</Typography>
                 </Box>
               ))}
