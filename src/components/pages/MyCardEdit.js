@@ -1,5 +1,5 @@
 import React from "react"
-import Edit from "../organisms/card/Edit"
+import Edit from "../organisms/myCard/Edit"
 import Header from "../organisms/Header"
 
 const CardEdit = () => {

@@ -6,6 +6,7 @@ import CardInfoDetail from "./CardInfoDetail"
 import CardInfoImage from "./CardInfoImage"
 
 const itemData = {
+  cardId: "m8HmMRHRXi",
   img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
   companyName: '株式会社Breakfast',
   sectionPosition: '営業部 副部長',
@@ -47,7 +48,7 @@ const CardInfo = () => {
       <Box p={3}>
         <Grid container justify="space-between">
           <Grid item>
-            <Typography variant="h6">名刺の詳細</Typography>
+            <Typography variant="h6">あなたの名刺の詳細</Typography>
           </Grid>
           <Grid item>
             <Grid container spacing={3} justify="flex-end">
@@ -57,7 +58,7 @@ const CardInfo = () => {
                   variant="contained"
                   endIcon={<Edit/>}
                   component={Link}
-                  to={`/cards/${cardId}/edit`}
+                  to={`/myCards/${cardId}/edit`}
                 >
                   編集する
                 </Button>
