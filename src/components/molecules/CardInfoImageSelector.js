@@ -1,7 +1,7 @@
 import { Box, Button } from "@material-ui/core"
 import { Panorama } from "@material-ui/icons"
 import React from "react"
-import CardInfoImage from "../organisms/CardInfoImage"
+import CardInfoImage from "../organisms/card/CardInfoImage"
 
 const CardInfoImageSelector = ({
   image = "", 

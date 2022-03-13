@@ -14,8 +14,8 @@ import { MoreVert } from "@material-ui/icons"
 import LongMenu from "./LongMenu"
 
 const BusinessCard = ({
-  actions = [],
   item = {},
+  cardVariant = "",
 }) => {
   const [open, setOpen] = useState(false)
   const anchorRef = useRef(null)
@@ -28,6 +28,19 @@ const BusinessCard = ({
     }
     setOpen(false)
   }
+
+  const actions = [
+    {
+      title: "詳細を見る",
+      color: "inherit",
+      to: `/${cardVariant}/${item.cardId}`,
+    },
+    {
+      title: "名刺を削除",
+      color: "error",
+      onClick: () => {},
+    },
+  ]
 
   return (
     <>

@@ -1,14 +1,14 @@
 import React from "react"
-import Edit from "../organisms/card/Edit"
+import Info from "../organisms/account/Info"
 import Header from "../organisms/Header"
 
-const CardEdit = () => {
+const Account = () => {
   return (
     <>
       <Header />
-      <Edit />
+      <Info />
     </>
   )
 }
 
-export default CardEdit
+export default Account

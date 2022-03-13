@@ -1,5 +1,5 @@
 import React from "react"
-import CardInfo from "../organisms/card/CardInfo"
+import CardInfo from "../organisms/myCard/CardInfo"
 import Header from "../organisms/Header"
 
 const CardDetail = () => {
