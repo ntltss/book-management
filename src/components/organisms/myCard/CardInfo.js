@@ -48,7 +48,7 @@ const CardInfo = () => {
       <Box p={3}>
         <Grid container justify="space-between">
           <Grid item>
-            <Typography variant="h6">他人の名刺の詳細</Typography>
+            <Typography variant="h6">あなたの名刺の詳細</Typography>
           </Grid>
           <Grid item>
             <Grid container spacing={3} justify="flex-end">
@@ -58,7 +58,7 @@ const CardInfo = () => {
                   variant="contained"
                   endIcon={<Edit/>}
                   component={Link}
-                  to={`/cards/${cardId}/edit`}
+                  to={`/myCards/${cardId}/edit`}
                 >
                   編集する
                 </Button>

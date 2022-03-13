@@ -82,7 +82,7 @@ const Edit = () => {
       <Box p={3}>
         <Grid container justify="space-between">
           <Grid item>
-            <Typography variant="h6">他人の名刺を編集</Typography>
+            <Typography variant="h6">あなたの名刺を編集</Typography>
           </Grid>
           <Grid item>
             <Grid container spacing={3} justify="flex-end">
@@ -101,7 +101,7 @@ const Edit = () => {
                   variant="contained"
                   endIcon={<Close/>}
                   component={Link}
-                  to={`/cards/${cardId}`}
+                  to={`/myCards/${cardId}`}
                 >
                   取り消す
                 </Button>

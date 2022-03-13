@@ -7,8 +7,12 @@ import {
     Button,
     Grid,
     Avatar,
+    IconButton,
+    Box,
  } from '@material-ui/core'
 import LongMenu from '../molecules/LongMenu';
+import { Menu } from '@material-ui/icons';
+import DrawerMenu from './DrawerMenu';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,23 +34,29 @@ const userData = {
 
 const Header = () => {
   const classes = useStyles();
-  const [open, setOpen] = useState(false)
+  const [MenuOpen, setMenuOpen] = useState(false)
   const anchorRef = useRef(null)
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen)
+  const [drawerOpen, setDrawerOpen] = useState(false)
+
+  const handleMenuToggle = () => {
+    setMenuOpen((prevOpen) => !prevOpen)
   }
-  const handleClose = (e) => {
+  const handleMenuClose = (e) => {
     if (anchorRef.current && anchorRef.current.contains(e.target)) {
       return;
     }
-    setOpen(false)
+    setMenuOpen(false)
+  }
+
+  const handleDrawerToggle = () => {
+    setDrawerOpen((prevOpen) => !prevOpen)
   }
 
   const actions = [
     {
-      title: "自分の名刺一覧",
+      title: "マイアカウント",
       color: "inherit",
-      to: `/myCards`,
+      to: `/account`,
     },
     {
       title: "ログアウト",
@@ -59,6 +69,13 @@ const Header = () => {
     <>
       <AppBar position="fixed">
         <Toolbar className={classes.root}>
+          <IconButton
+            color='inherit'
+            edge='start'
+            onClick={handleDrawerToggle}
+          >
+            <Menu />
+          </IconButton>
           <Grid container justify='space-between'>
             <Grid item>
               <Typography variant="h6">
@@ -69,7 +86,7 @@ const Header = () => {
               <Button
                 color="inherit"
                 variant='text'
-                onClick={handleToggle}
+                onClick={handleMenuToggle}
                 ref={anchorRef}
               >
                 <Avatar style={{width: 24, height: 24, marginRight: 16}}>{"山"}</Avatar>
@@ -81,12 +98,23 @@ const Header = () => {
           </Grid>
         </Toolbar>
       </AppBar>
+      <Box
+        component="nav"
+        sx={{
+          width: { sm: 240 }, flexShrink: { sm: 0 } 
+        }}
+      >
+        <DrawerMenu
+          open={drawerOpen}
+          onClose={handleDrawerToggle}
+        />
+      </Box>
       <LongMenu 
-        open={open}
+        open={MenuOpen}
         actions={actions}
         anchorEl={anchorRef.current}
         item={userData}
-        handleClose={handleClose}
+        handleClose={handleMenuClose}
       />
     </>
   )

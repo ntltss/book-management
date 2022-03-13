@@ -6,25 +6,12 @@ import {
   Button,
 } from "@material-ui/core"
 import { Check, Close } from "@material-ui/icons"
-import React, { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
 import CardInfoEdit from "./CardInfoEdit"
-import CardInfoImageSelector from "../../../components/molecules/CardInfoImageSelector"
+import CardInfoImageSelector from "../../molecules/CardInfoImageSelector"
 
-const itemData = {
-  img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-  companyName: '株式会社Breakfast',
-  sectionPosition: '営業部 副部長',
-  nameLast: 'Hoge',
-  nameFirst: 'Huga',
-  mail: "hoge@huga.com",
-  companyTel: "090-0000-0000",
-  width: '40%',
-}
-
-const Edit = () => {
-  const { cardId } = useParams()
-
+const Add = () => {
   const [image, setImage] = useState("")
   const [companyName, setCompanyName] = useState("")
   const [sectionPosition, setSectionPosition] = useState("")
@@ -32,16 +19,6 @@ const Edit = () => {
   const [nameFirst, setNameFirst] = useState("")
   const [companyTel, setCompanyTel] = useState("")
   const [mail, setMail] = useState("")
-
-  useEffect(() => {
-    setImage(itemData.img)
-    setCompanyName(itemData.companyName)
-    setSectionPosition(itemData.sectionPosition)
-    setNameLast(itemData.nameLast)
-    setNameFirst(itemData.nameFirst)
-    setCompanyTel(itemData.companyTel)
-    setMail(itemData.mail)
-  }, [])
 
   const detailList = [
     {
@@ -82,7 +59,7 @@ const Edit = () => {
       <Box p={3}>
         <Grid container justify="space-between">
           <Grid item>
-            <Typography variant="h6">他人の名刺を編集</Typography>
+            <Typography variant="h6">あなたの名刺を追加</Typography>
           </Grid>
           <Grid item>
             <Grid container spacing={3} justify="flex-end">
@@ -92,7 +69,7 @@ const Edit = () => {
                   variant="contained"
                   endIcon={<Check/>}
                 >
-                  更新する
+                  追加する
                 </Button>
               </Grid>
               <Grid item>
@@ -101,9 +78,9 @@ const Edit = () => {
                   variant="contained"
                   endIcon={<Close/>}
                   component={Link}
-                  to={`/cards/${cardId}`}
+                  to={"/myCards"}
                 >
-                  取り消す
+                  やめる
                 </Button>
               </Grid>
             </Grid>
@@ -113,7 +90,7 @@ const Edit = () => {
       
       <Divider />
       <Box pt={3}>
-        <Grid container spacing={3} justify="space-evenly">
+        <Grid container spacing={3}  justify="space-evenly">
           <Grid item>
             <CardInfoImageSelector image={image} setImage={setImage}/>
           </Grid>
@@ -127,4 +104,4 @@ const Edit = () => {
   )
 }
 
-export default Edit
+export default Add

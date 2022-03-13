@@ -15,6 +15,7 @@ import LongMenu from "./LongMenu"
 
 const BusinessCard = ({
   item = {},
+  cardVariant = "",
 }) => {
   const [open, setOpen] = useState(false)
   const anchorRef = useRef(null)
@@ -32,7 +33,7 @@ const BusinessCard = ({
     {
       title: "詳細を見る",
       color: "inherit",
-      to: `/cards/${item.cardId}`,
+      to: `/${cardVariant}/${item.cardId}`,
     },
     {
       title: "名刺を削除",

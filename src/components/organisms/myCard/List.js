@@ -14,13 +14,13 @@ const List = () => {
     <>
       <Box px={6} pt={8}>
         <Box py={3}>
-          <Typography variant="h6">他人の名刺</Typography>
+          <Typography variant="h6">あなたの名刺</Typography>
         </Box>
         <Divider />
         <Box p={2}>
           <Grid container alignItems="center" justifyContent="center" spacing={3}>
             {itemData.map((item) => (
-              <BusinessCard item={item} key={item.title} cardVariant={"cards"}/>
+              <BusinessCard item={item} key={item.title} cardVariant={"myCards"}/>
             ))}
           </Grid>
         </Box>
@@ -32,7 +32,7 @@ const List = () => {
           bottom: "70px",
           right: "30px",
         }}
-        href={"/cards/add"}
+        href={"/myCards/add"}
       >
         <Add />
       </Fab>

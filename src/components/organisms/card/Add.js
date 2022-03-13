@@ -59,7 +59,7 @@ const Add = () => {
       <Box p={3}>
         <Grid container justify="space-between">
           <Grid item>
-            <Typography variant="h6">名刺を追加</Typography>
+            <Typography variant="h6">他人の名刺を追加</Typography>
           </Grid>
           <Grid item>
             <Grid container spacing={3} justify="flex-end">
