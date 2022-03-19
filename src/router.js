@@ -7,11 +7,9 @@ const Account = lazy(() => import("./components/pages/Account"))
 const CardList = lazy(() => import("./components/pages/CardList"))
 const CardAdd = lazy(() => import("./components/pages/CardAdd"))
 const CardDetail = lazy(() => import("./components/pages/CardDetail"))
-const CardEdit = lazy(() => import("./components/pages/CardEdit"))
 const MyCardList = lazy(() => import("./components/pages/MyCardList"))
 const MyCardAdd = lazy(() => import("./components/pages/MyCardAdd"))
 const MyCardDetail = lazy(() => import("./components/pages/MyCardDetail"))
-const MyCardEdit = lazy(() => import("./components/pages/MyCardEdit"))
 
 const App = () => {
   return (
@@ -29,11 +27,9 @@ const App = () => {
             <Route exact path="/cards" element={<CardList/>} />
             <Route exact path="/cards/add" element={<CardAdd/>} />
             <Route exact path="/cards/:cardId" element={<CardDetail/>} />
-            <Route exact path="/cards/:cardId/edit" element={<CardEdit/>} />
             <Route exact path="/myCards" element={<MyCardList/>} />
             <Route exact path="/myCards/add" element={<MyCardAdd/>} />
             <Route exact path="/myCards/:cardId" element={<MyCardDetail/>} />
-            <Route exact path="/myCards/:cardId/edit" element={<MyCardEdit/>} />
           </Routes>
         </Suspense>
       </Router>
