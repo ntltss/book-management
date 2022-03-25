@@ -8,50 +8,14 @@ import {
 import { Check, Close } from "@material-ui/icons"
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
-import CardInfoEdit from "./CardInfoEdit"
-import CardInfoImageSelector from "../../molecules/CardInfoImageSelector"
+import CardCreateField from "./CardCreateField"
 
 const Add = () => {
   const [image, setImage] = useState("")
-  const [companyName, setCompanyName] = useState("")
-  const [sectionPosition, setSectionPosition] = useState("")
-  const [nameLast, setNameLast] = useState("")
-  const [nameFirst, setNameFirst] = useState("")
-  const [companyTel, setCompanyTel] = useState("")
-  const [mail, setMail] = useState("")
 
-  const detailList = [
-    {
-      key: "会社名",
-      value: companyName,
-      setValue: setCompanyName
-    },
-    {
-      key: "所属部署・職位",
-      value: sectionPosition,
-      setValue: setSectionPosition
-    },
-    {
-      key: "氏名（姓）",
-      value: nameLast,
-      setValue: setNameLast,
-    },
-    {
-      key: "氏名（名）",
-      value: nameFirst,
-      setValue: setNameFirst,
-    },
-    {
-      key: "会社連絡先",
-      value: companyTel,
-      setValue: setCompanyTel
-    },
-    {
-      key: "メールアドレス",
-      value: mail,
-      setValue: setMail
-    },
-  ]
+  const handleClickSubmit = () => {
+
+  }
 
   return (
     <>
@@ -68,6 +32,7 @@ const Add = () => {
                   color="primary"
                   variant="contained"
                   endIcon={<Check/>}
+                  onClick={handleClickSubmit}
                 >
                   追加する
                 </Button>
@@ -89,15 +54,8 @@ const Add = () => {
       </Box>
       
       <Divider />
-      <Box pt={3}>
-        <Grid container spacing={3}  justify="space-evenly">
-          <Grid item>
-            <CardInfoImageSelector image={image} setImage={setImage}/>
-          </Grid>
-          <Grid item>
-            <CardInfoEdit items={detailList}/>
-          </Grid>
-        </Grid>
+      <Box px={5} py={3}>
+        <CardCreateField setImage={setImage}/>
       </Box>
     </Box>
     </>
