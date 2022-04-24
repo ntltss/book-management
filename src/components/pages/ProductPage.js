@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import GenericTemplate from "../templates/GenericTemplate";
+import LongMenu from "../templates/LongMenu";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -9,7 +10,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { IconButton } from "@material-ui/core";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { MoreVert } from "@material-ui/icons";
+import { grey } from "@material-ui/core/colors";
 
 const createData = (name, category, weight, price) => {
   return { name, category, weight, price };
@@ -29,8 +31,32 @@ const useStyles = makeStyles({
   },
 });
 
-function ProductPage() {
+const ProductPage = ({ item = {}, cardVariant = "" }) => {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+  const handleClose = (e) => {
+    if (anchorRef.current && anchorRef.current.contains(e.target)) {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const actions = [
+    {
+      title: "詳細を見る",
+      color: "inherit",
+      // to: `/${cardVariant}/${item.cardId}`,
+    },
+    {
+      title: "名刺を削除",
+      color: "error",
+      onClick: () => {},
+    },
+  ];
 
   return (
     <GenericTemplate title="商品ページ">
@@ -55,9 +81,21 @@ function ProductPage() {
                 <TableCell align="right">{row.weight}</TableCell>
                 <TableCell align="right">{row.price}</TableCell>
                 <TableCell align="right">
-                  <IconButton>
-                    <MoreVertIcon />
+                  <IconButton
+                    id={`info about ${item.title}`}
+                    aria-label={`info about ${item.title}`}
+                    ref={anchorRef}
+                    onClick={handleToggle}
+                  >
+                    <MoreVert style={{ color: grey[600] }} />
                   </IconButton>
+                  <LongMenu
+                    anchorEl={anchorRef.current}
+                    actions={actions}
+                    open={open}
+                    item={item}
+                    handleClose={handleClose}
+                  />
                 </TableCell>
               </TableRow>
             ))}
@@ -66,6 +104,6 @@ function ProductPage() {
       </TableContainer>
     </GenericTemplate>
   );
-}
+};
 
 export default ProductPage;
