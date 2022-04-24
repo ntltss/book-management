@@ -8,6 +8,8 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { IconButton } from "@material-ui/core";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 const createData = (name, category, weight, price) => {
   return { name, category, weight, price };
@@ -40,6 +42,7 @@ function ProductPage() {
               <TableCell align="right">カテゴリー</TableCell>
               <TableCell align="right">重量(g)</TableCell>
               <TableCell align="right">価格(円)</TableCell>
+              <TableCell align="right">menu</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -51,6 +54,11 @@ function ProductPage() {
                 <TableCell align="right">{row.category}</TableCell>
                 <TableCell align="right">{row.weight}</TableCell>
                 <TableCell align="right">{row.price}</TableCell>
+                <TableCell align="right">
+                  <IconButton>
+                    <MoreVertIcon />
+                  </IconButton>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
