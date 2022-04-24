@@ -12,6 +12,7 @@ import Paper from "@material-ui/core/Paper";
 import { IconButton } from "@material-ui/core";
 import { MoreVert } from "@material-ui/icons";
 import { grey } from "@material-ui/core/colors";
+import { Box, Grid, Typography, Divider, Fab } from "@material-ui/core";
 
 const createData = (name, category, weight, price) => {
   return { name, category, weight, price };
@@ -22,7 +23,6 @@ const rows = [
   createData("ケーキ", "お菓子", 400, 480),
   createData("りんご", "フルーツ", 500, 360),
   createData("バナナ", "フルーツ", 200, 300),
-  createData("みかん", "フルーツ", 250, 180),
 ];
 
 const useStyles = makeStyles({
@@ -60,6 +60,36 @@ const ProductPage = ({ item = {}, cardVariant = "" }) => {
 
   return (
     <GenericTemplate title="商品ページ">
+      <Box px={6} pt={8}>
+        <Box py={3}>
+          <Typography variant="h6">あなたの名刺</Typography>
+        </Box>
+        <Divider />
+        <Box p={2}>
+          <Grid
+            container
+            alignItems="center"
+            justifyContent="center"
+            spacing={3}
+          >
+            {rows.map((row) => (
+              <>
+                <Typography>{row.name}</Typography>
+                <IconButton
+                  id={`info about ${item.title}`}
+                  aria-label={`info about ${item.title}`}
+                  // ref={anchorRef}
+                  onClick={handleToggle}
+                >
+                  {console.log(anchorRef)}
+                  <MoreVert style={{ color: grey[600] }} />
+                </IconButton>
+              </>
+            ))}
+          </Grid>
+        </Box>
+      </Box>
+
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
@@ -81,7 +111,7 @@ const ProductPage = ({ item = {}, cardVariant = "" }) => {
                 <TableCell align="right">{row.weight}</TableCell>
                 <TableCell align="right">{row.price}</TableCell>
                 <TableCell align="right">
-                  <IconButton
+                  {/* <IconButton
                     id={`info about ${item.title}`}
                     aria-label={`info about ${item.title}`}
                     ref={anchorRef}
@@ -95,13 +125,20 @@ const ProductPage = ({ item = {}, cardVariant = "" }) => {
                     open={open}
                     item={item}
                     handleClose={handleClose}
-                  />
+                  /> */}
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <LongMenu
+        anchorEl={anchorRef.current}
+        actions={actions}
+        open={open}
+        item={item}
+        handleClose={handleClose}
+      />
     </GenericTemplate>
   );
 };
