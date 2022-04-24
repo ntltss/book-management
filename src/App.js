@@ -9,8 +9,8 @@ import HomePage from "./components/pages/HomePage";
 function App() {
   return (
     <Routes>
-      <Route path="/products" element={<ProductPage />} exact />
-      <Route path="/" element={<HomePage />} exact />
+      <Route path="/products" element={<ProductPage />} />
+      <Route path="/" element={<HomePage />} />
     </Routes>
   );
 }
