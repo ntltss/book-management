@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import GenericTemplate from "../templates/GenericTemplate";
 import LongMenu from "../templates/LongMenu";
 import { makeStyles } from "@material-ui/core/styles";
@@ -17,6 +17,10 @@ import { Box, Grid, Typography, Divider, Fab } from "@material-ui/core";
 const createData = (name, category, weight, price) => {
   return { name, category, weight, price };
 };
+const createBookList = (bookId, title, author, price, isbnCode) => {
+  return { bookId, title, author, price, isbnCode };
+};
+let bookList = [];
 
 const rows = [
   createData("チョコレート", "お菓子", 100, 120),
@@ -35,6 +39,7 @@ const ProductPage = ({ item = {}, cardVariant = "" }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
+  const [bookList2, setBookList2] = useState([]);
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -58,8 +63,20 @@ const ProductPage = ({ item = {}, cardVariant = "" }) => {
     },
   ];
 
+  useEffect(() => {
+    fetch("http://localhost:8082/bookshelf/api/book")
+      .then((res) => res.json())
+      .then((json) => {
+        bookList = [];
+        json.map((json) => bookList.push(json));
+
+        setBookList2(bookList);
+      });
+  }, []);
+
   return (
     <GenericTemplate title="商品ページ">
+      {console.log("bookList", bookList)}
       <Box px={6} pt={8}>
         <Box py={3}>
           <Typography variant="h6">あなたの名刺</Typography>
@@ -94,24 +111,25 @@ const ProductPage = ({ item = {}, cardVariant = "" }) => {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>商品名</TableCell>
-              <TableCell align="right">カテゴリー</TableCell>
-              <TableCell align="right">重量(g)</TableCell>
-              <TableCell align="right">価格(円)</TableCell>
-              <TableCell align="right">menu</TableCell>
+              <TableCell>タイトル</TableCell>
+              <TableCell align="left">著者</TableCell>
+              <TableCell align="right">価格（円）</TableCell>
+              <TableCell align="right">ISIN CODE</TableCell>
+              <TableCell align="right">バージョン</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
-                  {row.name}
+            {bookList.map((bookList) => (
+              <TableRow key={bookList.bookId}>
+                <TableCell component="th" scope="bookList">
+                  {bookList.title}
                 </TableCell>
-                <TableCell align="right">{row.category}</TableCell>
-                <TableCell align="right">{row.weight}</TableCell>
-                <TableCell align="right">{row.price}</TableCell>
+                <TableCell align="left">{bookList.author}</TableCell>
+                <TableCell align="center">{bookList.price}</TableCell>
+                <TableCell align="center">{bookList.isbnCode}</TableCell>
+                <TableCell align="center">{bookList.version}</TableCell>
                 <TableCell align="right">
-                  {/* <IconButton
+                  <IconButton
                     id={`info about ${item.title}`}
                     aria-label={`info about ${item.title}`}
                     ref={anchorRef}
@@ -125,7 +143,7 @@ const ProductPage = ({ item = {}, cardVariant = "" }) => {
                     open={open}
                     item={item}
                     handleClose={handleClose}
-                  /> */}
+                  />
                 </TableCell>
               </TableRow>
             ))}
