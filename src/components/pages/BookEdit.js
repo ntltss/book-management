@@ -1,14 +1,14 @@
 import React from "react";
-import Add from "../organisms/book/Add";
+import Edit from "../organisms/book/Edit";
 import Header from "../organisms/Header";
 
-const BookAdd = () => {
+const BookEdit = () => {
   return (
     <>
       <Header />
-      <Add />
+      <Edit />
     </>
   );
 };
 
-export default BookAdd;
+export default BookEdit;

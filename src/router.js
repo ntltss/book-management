@@ -4,10 +4,10 @@ import { Backdrop } from "@material-ui/core";
 
 const Login = lazy(() => import("./components/pages/Login"));
 const Account = lazy(() => import("./components/pages/Account"));
-const CardList = lazy(() => import("./components/pages/CardList"));
+const BookList = lazy(() => import("./components/pages/BookList"));
 const BookAdd = lazy(() => import("./components/pages/BookAdd"));
-const CardDetail = lazy(() => import("./components/pages/CardDetail"));
-const CardEdit = lazy(() => import("./components/pages/CardEdit"));
+const BookDetail = lazy(() => import("./components/pages/BookDetail"));
+const BookEdit = lazy(() => import("./components/pages/BookEdit"));
 
 const App = () => {
   return (
@@ -18,10 +18,10 @@ const App = () => {
             <Route exact path="/" element={<Login />} />
             <Route exact path="/account" element={<Account />} />
             <Route exact path="/account" element={<Account />} />
-            <Route exact path="/cards" element={<CardList />} />
+            <Route exact path="/cards" element={<BookList />} />
             <Route exact path="/books/add" element={<BookAdd />} />
-            <Route exact path="/cards/:cardId" element={<CardDetail />} />
-            <Route exact path="/cards/:cardId/edit" element={<CardEdit />} />
+            <Route exact path="/cards/:cardId" element={<BookDetail />} />
+            <Route exact path="/cards/:cardId/edit" element={<BookEdit />} />
           </Routes>
         </Suspense>
       </Router>
