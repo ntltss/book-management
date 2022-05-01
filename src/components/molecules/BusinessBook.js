@@ -8,6 +8,7 @@ import {
   CardHeader,
   Divider,
   Paper,
+  Box,
 } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
 import { MoreVert } from "@material-ui/icons";
@@ -44,21 +45,47 @@ const BusinessBook = ({ item = {}, cardVariant = "" }) => {
       <Grid item key={item.img}>
         <Paper>
           <Card style={{ backgroundColor: grey[50] }} key={item.img}>
-            <CardHeader
+            <CardContent>
+              <Grid container justify="space-between">
+                <Grid item>
+                  <Typography variant="h6">{item.title}</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography variant="h6">{item.author}</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography variant="h6">マイアカウント</Typography>
+                </Grid>
+                <Grid item>
+                  <Grid container spacing={3} justify="flex-end">
+                    <IconButton
+                      id={`info about ${item.title}`}
+                      aria-label={`info about ${item.title}`}
+                      ref={anchorRef}
+                      onClick={handleToggle}
+                    >
+                      <MoreVert style={{ color: grey[600] }} />
+                    </IconButton>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </CardContent>
+            {/* TODO:ref={anchorRef}を先にコメントアウトしてから全体をコメントアウトするとなぜかうまくメニューが狙ったところに開く */}
+            {/* <CardHeader
               action={
                 <IconButton
                   id={`info about ${item.title}`}
                   aria-label={`info about ${item.title}`}
-                  ref={anchorRef}
+                  // ref={anchorRef}
                   onClick={handleToggle}
                 >
                   <MoreVert style={{ color: grey[600] }} />
                 </IconButton>
               }
               title={<Typography>{item.title}</Typography>}
-              title2={<Typography>{item.title}</Typography>}
+              title2={<Typography>{item.cardId}</Typography>}
               subheader={<Typography>{item.author}</Typography>}
-            />
+            /> */}
             <Divider />
             {/* <CardContent>
               <img
