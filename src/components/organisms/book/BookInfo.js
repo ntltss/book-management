@@ -58,7 +58,7 @@ const BookInfo = () => {
                     variant="contained"
                     endIcon={<Edit />}
                     component={Link}
-                    to={`/cards/${cardId}/edit`}
+                    to={`/books/${cardId}/edit`}
                   >
                     編集する
                   </Button>

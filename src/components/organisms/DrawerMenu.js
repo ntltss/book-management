@@ -1,23 +1,29 @@
-import React from "react"
-import { Drawer, Box, List, ListItem, Typography, Divider, Button, IconButton } from "@material-ui/core"
-import { Link } from "react-router-dom"
-import { ArrowBackIos } from "@material-ui/icons"
+import React from "react";
+import {
+  Drawer,
+  Box,
+  List,
+  ListItem,
+  Typography,
+  Divider,
+  Button,
+  IconButton,
+} from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { ArrowBackIos } from "@material-ui/icons";
 
 const listItems = [
   {
-    name: "あなたの名刺",
-    to: "/myCards",
+    name: "トップ",
+    to: "/books",
   },
   {
-    name: "他人の名刺",
-    to: "/cards",
+    name: "書籍一覧",
+    to: "/books",
   },
-]
+];
 
-const DrawerMenu = ({
-  open = {},
-  onClose = () => {},
-}) => {
+const DrawerMenu = ({ open = {}, onClose = () => {} }) => {
   return (
     <>
       <Drawer
@@ -29,29 +35,28 @@ const DrawerMenu = ({
           keepMounted: true,
         }}
         sx={{
-          display: { xs: 'block', sm: 'none' },
+          display: { xs: "block", sm: "none" },
         }}
       >
-        <Box sx={{display: 'flex', justifyContent: 'flex-end', height: 50, color: 'primary'}}>
-          <IconButton
-            onClick={onClose}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            height: 50,
+            color: "primary",
+          }}
+        >
+          <IconButton onClick={onClose}>
             <ArrowBackIos />
           </IconButton>
         </Box>
         <Divider />
         <List>
           {listItems.map((item) => (
-            <ListItem style={{padding: 0}}>
-              <Button
-                variant="text"
-                component={Link}
-                to={item.to}
-                fullWidth
-              >
+            <ListItem style={{ padding: 0 }}>
+              <Button variant="text" component={Link} to={item.to} fullWidth>
                 <Box px={3} py={2}>
-                  <Typography variant="body1">
-                    {item.name}
-                  </Typography>
+                  <Typography variant="body1">{item.name}</Typography>
                 </Box>
               </Button>
             </ListItem>
@@ -59,7 +64,7 @@ const DrawerMenu = ({
         </List>
       </Drawer>
     </>
-  )
-}
+  );
+};
 
-export default DrawerMenu
+export default DrawerMenu;

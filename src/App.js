@@ -1,12 +1,12 @@
 import React from "react";
-import CardList from "./components/pages/BookList";
+import BookList from "./components/pages/BookList";
 import { Auth } from "./store/auth";
 
 const App = () => {
   return (
     <>
       <Auth>
-        <CardList />
+        <BookList />
       </Auth>
     </>
   );

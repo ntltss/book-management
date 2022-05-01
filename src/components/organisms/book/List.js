@@ -1,14 +1,14 @@
 import { Box, Grid, Typography, Divider, Fab } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import React from "react";
-import BusinessCard from "../../molecules/BusinessBook";
+import BusinessBook from "../../molecules/BusinessBook";
 
 const List = () => {
   return (
     <>
       <Box px={6} pt={8}>
         <Box py={3}>
-          <Typography variant="h6">他人の名刺</Typography>
+          <Typography variant="h6">書籍一覧</Typography>
         </Box>
         <Divider />
         <Box p={2}>
@@ -19,10 +19,10 @@ const List = () => {
             spacing={3}
           >
             {itemData.map((item) => (
-              <BusinessCard
+              <BusinessBook
                 item={item}
                 key={item.title}
-                cardVariant={"cards"}
+                cardVariant={"books"}
               />
             ))}
           </Grid>
@@ -35,7 +35,7 @@ const List = () => {
           bottom: "70px",
           right: "30px",
         }}
-        href={"/cards/add"}
+        href={"/books/add"}
       >
         <Add />
       </Fab>

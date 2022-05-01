@@ -1,14 +1,7 @@
-import {
-  Box,
-  Grid,
-  Paper,
-  Typography,
-} from "@material-ui/core"
-import React from "react"
+import { Box, Grid, Paper, Typography } from "@material-ui/core";
+import React from "react";
 
-const CardInfoDetail = ({
-  items = {},
-}) => {
+const BookInfoDetail = ({ items = {} }) => {
   return (
     <>
       <Paper>
@@ -32,7 +25,7 @@ const CardInfoDetail = ({
         </Box>
       </Paper>
     </>
-  )
-}
+  );
+};
 
-export default CardInfoDetail
+export default BookInfoDetail;

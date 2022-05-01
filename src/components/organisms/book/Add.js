@@ -72,7 +72,7 @@ const Add = () => {
                     variant="contained"
                     endIcon={<Close />}
                     component={Link}
-                    to={"/cards"}
+                    to={"/books"}
                   >
                     やめる
                   </Button>

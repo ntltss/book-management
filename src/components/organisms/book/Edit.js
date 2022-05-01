@@ -95,7 +95,7 @@ const Edit = () => {
                     variant="contained"
                     endIcon={<Close />}
                     component={Link}
-                    to={`/cards/${cardId}`}
+                    to={`/books/${cardId}`}
                   >
                     取り消す
                   </Button>

@@ -1,15 +1,7 @@
-import {
-  Box,
-  Grid,
-  Paper,
-  TextField,
-  Typography,
-} from "@material-ui/core"
-import React from "react"
+import { Box, Grid, Paper, TextField, Typography } from "@material-ui/core";
+import React from "react";
 
-const CardInfoEdit = ({
-  items = {},
-}) => {
+const BookInfoEdit = ({ items = {} }) => {
   return (
     <>
       <Paper>
@@ -18,20 +10,21 @@ const CardInfoEdit = ({
             <Grid item>
               {items.map((item) => (
                 <Box px={4}>
-                  <Grid container spacing={2} justify="space-between" alignItems="center">
+                  <Grid
+                    container
+                    spacing={2}
+                    justify="space-between"
+                    alignItems="center"
+                  >
                     <Grid item>
-                      <Typography
-                        variant="subtitle2"
-                      >
-                        {item.key}
-                      </Typography>
+                      <Typography variant="subtitle2">{item.key}</Typography>
                     </Grid>
                     <Grid item>
                       <TextField
                         variant="outlined"
                         value={item.value}
                         onChange={(e) => {
-                          item.setValue(e.target.value)
+                          item.setValue(e.target.value);
                         }}
                       />
                     </Grid>
@@ -43,7 +36,7 @@ const CardInfoEdit = ({
         </Box>
       </Paper>
     </>
-  )
-}
+  );
+};
 
-export default CardInfoEdit
+export default BookInfoEdit;

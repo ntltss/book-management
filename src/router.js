@@ -18,10 +18,10 @@ const App = () => {
             <Route exact path="/" element={<Login />} />
             <Route exact path="/account" element={<Account />} />
             <Route exact path="/account" element={<Account />} />
-            <Route exact path="/cards" element={<BookList />} />
+            <Route exact path="/books" element={<BookList />} />
             <Route exact path="/books/add" element={<BookAdd />} />
-            <Route exact path="/cards/:cardId" element={<BookDetail />} />
-            <Route exact path="/cards/:cardId/edit" element={<BookEdit />} />
+            <Route exact path="/books/:bookId" element={<BookDetail />} />
+            <Route exact path="/books/:bookId/edit" element={<BookEdit />} />
           </Routes>
         </Suspense>
       </Router>
