@@ -1,11 +1,15 @@
-import "./App.css";
+import React from "react";
+import CardList from "./components/pages/CardList";
+import { Auth } from "./store/auth";
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <h1>Hello world</h1>
-    </div>
+    <>
+      <Auth>
+        <CardList />
+      </Auth>
+    </>
   );
-}
+};
 
 export default App;
