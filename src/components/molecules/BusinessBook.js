@@ -43,35 +43,41 @@ const BusinessBook = ({ item = {}, cardVariant = "" }) => {
   return (
     <>
       <Grid item key={item.img}>
-        <Paper>
-          <Card style={{ backgroundColor: grey[50] }} key={item.img}>
-            <CardContent>
-              <Grid container justify="space-between">
-                <Grid item>
-                  <Typography variant="h6">{item.title}</Typography>
-                </Grid>
-                <Grid item>
-                  <Typography variant="h6">{item.author}</Typography>
-                </Grid>
-                <Grid item>
-                  <Typography variant="h6">マイアカウント</Typography>
-                </Grid>
-                <Grid item>
-                  <Grid container spacing={3} justify="flex-end">
-                    <IconButton
-                      id={`info about ${item.title}`}
-                      aria-label={`info about ${item.title}`}
-                      ref={anchorRef}
-                      onClick={handleToggle}
-                    >
-                      <MoreVert style={{ color: grey[600] }} />
-                    </IconButton>
-                  </Grid>
+        {/* <Paper> */}
+        <Card style={{ backgroundColor: grey[50] }} key={item.img}>
+          <CardContent>
+            <Grid container justify="space-between">
+              <Grid item>
+                <Typography variant="h6">{item.title}</Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="h6">{item.author}</Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="h6">{item.price}</Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="h6">{item.isbnCode}</Typography>
+              </Grid>
+              {/* <Grid item>
+                  <Typography variant="h6">{item.version}</Typography>
+                </Grid> */}
+              <Grid item>
+                <Grid container spacing={1} justify="flex-end">
+                  <IconButton
+                    id={`info about ${item.title}`}
+                    aria-label={`info about ${item.title}`}
+                    ref={anchorRef}
+                    onClick={handleToggle}
+                  >
+                    <MoreVert style={{ color: grey[600] }} />
+                  </IconButton>
                 </Grid>
               </Grid>
-            </CardContent>
-            {/* TODO:ref={anchorRef}を先にコメントアウトしてから全体をコメントアウトするとなぜかうまくメニューが狙ったところに開く */}
-            {/* <CardHeader
+            </Grid>
+          </CardContent>
+          {/* TODO:ref={anchorRef}を先にコメントアウトしてから全体をコメントアウトするとなぜかうまくメニューが狙ったところに開く */}
+          {/* <CardHeader
               action={
                 <IconButton
                   id={`info about ${item.title}`}
@@ -86,8 +92,8 @@ const BusinessBook = ({ item = {}, cardVariant = "" }) => {
               title2={<Typography>{item.cardId}</Typography>}
               subheader={<Typography>{item.author}</Typography>}
             /> */}
-            <Divider />
-            {/* <CardContent>
+          <Divider />
+          {/* <CardContent>
               <img
                 src={`${item.img}`}
                 srcSet={`${item.img}`}
@@ -96,8 +102,8 @@ const BusinessBook = ({ item = {}, cardVariant = "" }) => {
                 loading="lazy"
               />
             </CardContent> */}
-          </Card>
-        </Paper>
+        </Card>
+        {/* </Paper> */}
       </Grid>
       <LongMenu
         anchorEl={anchorRef.current}

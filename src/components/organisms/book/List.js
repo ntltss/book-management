@@ -1,9 +1,32 @@
-import { Box, Grid, Typography, Divider, Fab } from "@material-ui/core";
+import React, { useRef, useState, useEffect } from "react";
+import {
+  Box,
+  Grid,
+  Typography,
+  Divider,
+  Fab,
+  Card,
+  CardContent,
+} from "@material-ui/core";
 import { Add } from "@material-ui/icons";
-import React from "react";
 import BusinessBook from "../../molecules/BusinessBook";
+import { grey } from "@material-ui/core/colors";
 
+let bookList = [];
 const List = () => {
+  const [bookList2, setBookList2] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8082/bookshelf/api/book")
+      .then((res) => res.json())
+      .then((json) => {
+        bookList = [];
+        json.map((json) => bookList.push(json));
+
+        setBookList2(bookList);
+        console.log(bookList);
+      });
+  }, []);
+
   return (
     <>
       <Box px={6} pt={8}>
@@ -13,8 +36,29 @@ const List = () => {
         <Divider />
 
         <Box p={2}>
+          <Card style={{ backgroundColor: grey[50] }}>
+            <CardContent style={{ backgroundColor: grey[50] }}>
+              <Grid container justify="space-around">
+                <Grid item>
+                  <Typography variant="h6">タイトル</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography variant="h6">著者</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography variant="h6">価格(円)</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography variant="h6">ISINコード</Typography>
+                </Grid>
+                {/* <Grid item>
+                  <Typography variant="h6">バージョン</Typography>
+                </Grid> */}
+              </Grid>
+            </CardContent>
+          </Card>
           <Grid>
-            {itemData.map((item) => (
+            {bookList.map((item) => (
               <BusinessBook
                 item={item}
                 key={item.title}
