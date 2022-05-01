@@ -17,58 +17,70 @@ const itemData = {
 };
 
 const Edit = () => {
-  const { cardId } = useParams();
+  const { bookId } = useParams();
 
   const [image, setImage] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [sectionPosition, setSectionPosition] = useState("");
-  const [nameLast, setNameLast] = useState("");
-  const [nameFirst, setNameFirst] = useState("");
-  const [companyTel, setCompanyTel] = useState("");
-  const [mail, setMail] = useState("");
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [price, setPrice] = useState("");
+  const [isbnCode, setIsbnCode] = useState("");
+  const [version, setVersion] = useState("");
 
+  let bookList = [];
+  const [bookList2, setBookList2] = useState([]);
+  const [detailList, setDetailList] = useState([]);
   useEffect(() => {
-    setImage(itemData.img);
-    setCompanyName(itemData.companyName);
-    setSectionPosition(itemData.sectionPosition);
-    setNameLast(itemData.nameLast);
-    setNameFirst(itemData.nameFirst);
-    setCompanyTel(itemData.companyTel);
-    setMail(itemData.mail);
-  }, []);
+    fetch("http://localhost:8082/bookshelf/api/book")
+      .then((res) => res.json())
+      .then((json) => {
+        bookList = [];
+        console.log("fetch_start2");
+        json.map((json) => bookList.push(json));
+        console.log("edit_bookList_inside", bookList);
+        setBookList2(bookList);
 
-  const detailList = [
-    {
-      key: "会社名",
-      value: companyName,
-      setValue: setCompanyName,
-    },
-    {
-      key: "所属部署・職位",
-      value: sectionPosition,
-      setValue: setSectionPosition,
-    },
-    {
-      key: "氏名（姓）",
-      value: nameLast,
-      setValue: setNameLast,
-    },
-    {
-      key: "氏名（名）",
-      value: nameFirst,
-      setValue: setNameFirst,
-    },
-    {
-      key: "会社連絡先",
-      value: companyTel,
-      setValue: setCompanyTel,
-    },
-    {
-      key: "メールアドレス",
-      value: mail,
-      setValue: setMail,
-    },
-  ];
+        setImage(itemData.img);
+        console.log("edit_bookId", bookId);
+        console.log("bookList[bookId - 1].title", bookList[bookId - 1].title);
+        setTitle(bookList[bookId - 1].title);
+        setAuthor(bookList[bookId - 1].author);
+        setPrice(bookList[bookId - 1].price);
+        setIsbnCode(bookList[bookId - 1].isbnCode);
+        setVersion(bookList[bookId - 1].version);
+
+        setDetailList([
+          {
+            key: "bookId",
+            value: bookList[bookId - 1].bookId,
+          },
+          {
+            key: "タイトル",
+            value: bookList[bookId - 1].title,
+            setValue: setTitle,
+          },
+          {
+            key: "著者",
+            value: bookList[bookId - 1].author,
+            setValue: setAuthor,
+          },
+          {
+            key: "価格(円)",
+            value: bookList[bookId - 1].price,
+            setValue: setPrice,
+          },
+          {
+            key: "ISINコード",
+            value: bookList[bookId - 1].isbnCode,
+            setValue: setIsbnCode,
+          },
+          {
+            key: "バージョン",
+            value: bookList[bookId - 1].version,
+            setValue: setVersion,
+          },
+        ]);
+      });
+  }, []);
 
   return (
     <>
@@ -76,7 +88,7 @@ const Edit = () => {
         <Box p={3}>
           <Grid container justify="space-between">
             <Grid item>
-              <Typography variant="h6">他人の名刺を編集</Typography>
+              <Typography variant="h6">書籍情報を編集</Typography>
             </Grid>
             <Grid item>
               <Grid container spacing={3} justify="flex-end">
@@ -95,7 +107,7 @@ const Edit = () => {
                     variant="contained"
                     endIcon={<Close />}
                     component={Link}
-                    to={`/books/${cardId}`}
+                    to={`/books/${bookId}`}
                   >
                     取り消す
                   </Button>

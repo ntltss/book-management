@@ -29,6 +29,7 @@ const BookInfo = () => {
       .then((res) => res.json())
       .then((json) => {
         bookList = [];
+        console.log("fetch_start1");
         json.map((json) => bookList.push(json));
 
         setBookList2(bookList);
