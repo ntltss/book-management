@@ -14,7 +14,7 @@ import { grey } from "@material-ui/core/colors";
 import { MoreVert } from "@material-ui/icons";
 import LongMenu from "./LongMenu";
 
-const BusinessBook = ({ item = {}, cardVariant = "" }) => {
+const BusinessBook = ({ item = {}, bookVariant = "" }) => {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const handleToggle = () => {
@@ -31,10 +31,10 @@ const BusinessBook = ({ item = {}, cardVariant = "" }) => {
     {
       title: "詳細を見る",
       color: "inherit",
-      to: `/${cardVariant}/${item.cardId}`,
+      to: `/${bookVariant}/${item.bookId}`,
     },
     {
-      title: "名刺を削除",
+      title: "書籍を削除",
       color: "error",
       onClick: () => {},
     },

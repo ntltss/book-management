@@ -1,6 +1,6 @@
 import { Grid, Box, Typography, Divider, Button } from "@material-ui/core";
 import { Delete, Edit } from "@material-ui/icons";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import BookInfoDetail from "./BookInfoDetail";
 import BookInfoImage from "./BookInfoImage";
@@ -18,29 +18,51 @@ const itemData = {
 };
 
 const BookInfo = () => {
-  const { cardId } = useParams();
-  const detailList = [
-    {
-      key: "会社名",
-      value: itemData.companyName,
-    },
-    {
-      key: "所属部署・職位",
-      value: itemData.sectionPosition,
-    },
-    {
-      key: "氏名",
-      value: `${itemData.nameLast} ${itemData.nameFirst}`,
-    },
-    {
-      key: "会社連絡先",
-      value: itemData.companyTel,
-    },
-    {
-      key: "メールアドレス",
-      value: itemData.mail,
-    },
-  ];
+  const { bookId } = useParams();
+  console.log(bookId);
+
+  let bookList = [];
+  const [detailList, setDetailList] = useState([]);
+  const [bookList2, setBookList2] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8082/bookshelf/api/book")
+      .then((res) => res.json())
+      .then((json) => {
+        bookList = [];
+        json.map((json) => bookList.push(json));
+
+        setBookList2(bookList);
+        console.log(bookList);
+        console.log("bookList[0]", bookList[bookId - 1].bookId);
+
+        setDetailList([
+          {
+            key: "bookId",
+            value: bookList[bookId - 1].bookId,
+          },
+          {
+            key: "タイトル",
+            value: bookList[bookId - 1].title,
+          },
+          {
+            key: "著者",
+            value: bookList[bookId - 1].author,
+          },
+          {
+            key: "価格(円)",
+            value: bookList[bookId - 1].price,
+          },
+          {
+            key: "ISINコード",
+            value: bookList[bookId - 1].isbnCode,
+          },
+          {
+            key: "バージョン",
+            value: bookList[bookId - 1].version,
+          },
+        ]);
+      });
+  }, []);
 
   return (
     <>
@@ -48,7 +70,7 @@ const BookInfo = () => {
         <Box p={3}>
           <Grid container justify="space-between">
             <Grid item>
-              <Typography variant="h6">他人の名刺の詳細</Typography>
+              <Typography variant="h6">書籍の詳細</Typography>
             </Grid>
             <Grid item>
               <Grid container spacing={3} justify="flex-end">
@@ -58,7 +80,7 @@ const BookInfo = () => {
                     variant="contained"
                     endIcon={<Edit />}
                     component={Link}
-                    to={`/books/${cardId}/edit`}
+                    to={`/books/${bookId}/edit`}
                   >
                     編集する
                   </Button>

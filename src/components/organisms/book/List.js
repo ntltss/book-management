@@ -23,7 +23,6 @@ const List = () => {
         json.map((json) => bookList.push(json));
 
         setBookList2(bookList);
-        console.log(bookList);
       });
   }, []);
 
@@ -62,7 +61,7 @@ const List = () => {
               <BusinessBook
                 item={item}
                 key={item.title}
-                cardVariant={"books"}
+                bookVariant={"books"}
               />
             ))}
           </Grid>
