@@ -11,13 +11,9 @@ const List = () => {
           <Typography variant="h6">書籍一覧</Typography>
         </Box>
         <Divider />
+
         <Box p={2}>
-          <Grid
-            container
-            alignItems="center"
-            justifyContent="center"
-            spacing={3}
-          >
+          <Grid>
             {itemData.map((item) => (
               <BusinessBook
                 item={item}

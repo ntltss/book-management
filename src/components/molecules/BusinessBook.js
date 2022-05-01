@@ -56,10 +56,11 @@ const BusinessBook = ({ item = {}, cardVariant = "" }) => {
                 </IconButton>
               }
               title={<Typography>{item.title}</Typography>}
+              title2={<Typography>{item.title}</Typography>}
               subheader={<Typography>{item.author}</Typography>}
             />
             <Divider />
-            <CardContent>
+            {/* <CardContent>
               <img
                 src={`${item.img}`}
                 srcSet={`${item.img}`}
@@ -67,7 +68,7 @@ const BusinessBook = ({ item = {}, cardVariant = "" }) => {
                 width={300}
                 loading="lazy"
               />
-            </CardContent>
+            </CardContent> */}
           </Card>
         </Paper>
       </Grid>
