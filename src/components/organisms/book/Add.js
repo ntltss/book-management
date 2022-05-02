@@ -61,6 +61,18 @@ const Add = () => {
         isbnCode: isbnCode,
         version: version,
       }),
+      //TODO:入力簡略化用（不要になったら削除すること）
+      // fetch("http://localhost:8082/bookshelf/api/book", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     bookId: 6,
+      //     title: "この一冊で全部わかるネットワークの基本!!",
+      //     author: "福永勇二",
+      //     price: 1848,
+      //     isbnCode: "4797386673",
+      //     version: "2022-05-02T16:40:30.548719",
+      //   }),
     })
       .then((res) => res.json())
       .then((json) => {});

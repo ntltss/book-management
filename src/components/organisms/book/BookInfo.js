@@ -65,6 +65,16 @@ const BookInfo = () => {
       });
   }, []);
 
+  const deleteBook = () => {
+    console.log("delete!");
+    fetch(`http://localhost:8082/bookshelf/api/book/${bookId}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((json) => {});
+  };
+
   return (
     <>
       <Box pt={8} px={3}>
@@ -91,6 +101,7 @@ const BookInfo = () => {
                     color="secondary"
                     variant="contained"
                     endIcon={<Delete />}
+                    onClick={deleteBook}
                   >
                     削除する
                   </Button>
