@@ -33,18 +33,25 @@ const BusinessBook = ({ item = {}, bookVariant = "" }) => {
       color: "inherit",
       to: `/${bookVariant}/${item.bookId}`,
     },
-    {
-      title: "書籍を削除",
-      color: "error",
-      onClick: () => {},
-    },
+    // {
+    //   title: "書籍を削除",
+    //   color: "error",
+    //   onClick: () => {},
+    // },
   ];
 
   return (
     <>
       <Grid item key={item.img}>
         {/* <Paper> */}
-        <Card style={{ backgroundColor: grey[50] }} key={item.img}>
+        <Card
+          style={{ backgroundColor: grey[50] }}
+          key={item.img}
+          //TODO:一覧で各ページにリンクで飛ばす場合は、下記コメントアウトを解除する
+          // onClick={() =>
+          //   (window.location.href = `/${bookVariant}/${item.bookId}`)
+          // }
+        >
           <CardContent>
             <Grid container justify="space-between">
               <Grid item>
