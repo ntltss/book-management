@@ -84,6 +84,24 @@ const Edit = () => {
     },
   ];
 
+  const amendBook = () => {
+    console.log("amend!");
+    fetch("http://localhost:8082/bookshelf/api/book", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        bookId: bookId2,
+        title: title,
+        author: author,
+        price: price,
+        isbnCode: isbnCode,
+        version: version,
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) => {});
+  };
+
   return (
     <>
       <Box pt={8} px={3}>
@@ -99,6 +117,7 @@ const Edit = () => {
                     color="primary"
                     variant="contained"
                     endIcon={<Check />}
+                    onClick={amendBook}
                   >
                     更新する
                   </Button>
