@@ -7,43 +7,43 @@ import BookInfoImageSelector from "../../molecules/BookInfoImageSelector";
 
 const Add = () => {
   const [image, setImage] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [sectionPosition, setSectionPosition] = useState("");
-  const [nameLast, setNameLast] = useState("");
-  const [nameFirst, setNameFirst] = useState("");
-  const [companyTel, setCompanyTel] = useState("");
-  const [mail, setMail] = useState("");
+  const [bookId2, setBookId] = useState("");
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [price, setPrice] = useState("");
+  const [isbnCode, setIsbnCode] = useState("");
+  const [version, setVersion] = useState("");
 
   const detailList = [
     {
-      key: "会社名",
-      value: companyName,
-      setValue: setCompanyName,
+      key: "bookId",
+      value: bookId2,
+      setValue: setBookId,
     },
     {
-      key: "所属部署・職位",
-      value: sectionPosition,
-      setValue: setSectionPosition,
+      key: "タイトル",
+      value: title,
+      setValue: setTitle,
     },
     {
-      key: "氏名（姓）",
-      value: nameLast,
-      setValue: setNameLast,
+      key: "著者",
+      value: author,
+      setValue: setAuthor,
     },
     {
-      key: "氏名（名）",
-      value: nameFirst,
-      setValue: setNameFirst,
+      key: "価格(円)",
+      value: price,
+      setValue: setPrice,
     },
     {
-      key: "会社連絡先",
-      value: companyTel,
-      setValue: setCompanyTel,
+      key: "ISINコード",
+      value: isbnCode,
+      setValue: setIsbnCode,
     },
     {
-      key: "メールアドレス",
-      value: mail,
-      setValue: setMail,
+      key: "バージョン",
+      value: version,
+      setValue: setVersion,
     },
   ];
 
@@ -53,7 +53,7 @@ const Add = () => {
         <Box p={3}>
           <Grid container justify="space-between">
             <Grid item>
-              <Typography variant="h6">他人の名刺を追加</Typography>
+              <Typography variant="h6">書籍を追加</Typography>
             </Grid>
             <Grid item>
               <Grid container spacing={3} justify="flex-end">
