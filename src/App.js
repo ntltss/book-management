@@ -1,11 +1,15 @@
-import "./App.css";
+import React from "react";
+import BookList from "./components/pages/BookList";
+import { Auth } from "./store/auth";
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <h1>Hello world</h1>
-    </div>
+    <>
+      <Auth>
+        <BookList />
+      </Auth>
+    </>
   );
-}
+};
 
 export default App;
