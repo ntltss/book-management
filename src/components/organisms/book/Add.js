@@ -49,16 +49,17 @@ const Add = () => {
 
   const insertBook = () => {
     console.log("Insert!");
+    console.log("title", title);
     fetch("http://localhost:8082/bookshelf/api/book", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        bookId: 4,
-        title: "この一冊で全部わかるネットワークの基本!!",
-        author: "福永勇二",
-        price: 1848,
-        isbnCode: "4797386673",
-        version: "2022-05-02T16:40:30.548719",
+        bookId: bookId2,
+        title: title,
+        author: author,
+        price: price,
+        isbnCode: isbnCode,
+        version: version,
       }),
     })
       .then((res) => res.json())
