@@ -20,6 +20,7 @@ const Edit = () => {
   const { bookId } = useParams();
 
   const [image, setImage] = useState("");
+  const [bookId2, setBookId] = useState("");
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [price, setPrice] = useState("");
@@ -28,7 +29,6 @@ const Edit = () => {
 
   let bookList = [];
   const [bookList2, setBookList2] = useState([]);
-  const [detailList, setDetailList] = useState([]);
   useEffect(() => {
     fetch("http://localhost:8082/bookshelf/api/book")
       .then((res) => res.json())
@@ -42,45 +42,47 @@ const Edit = () => {
         setImage(itemData.img);
         console.log("edit_bookId", bookId);
         console.log("bookList[bookId - 1].title", bookList[bookId - 1].title);
+        setBookId(bookList[bookId - 1].bookId);
         setTitle(bookList[bookId - 1].title);
         setAuthor(bookList[bookId - 1].author);
         setPrice(bookList[bookId - 1].price);
         setIsbnCode(bookList[bookId - 1].isbnCode);
         setVersion(bookList[bookId - 1].version);
-
-        setDetailList([
-          {
-            key: "bookId",
-            value: bookList[bookId - 1].bookId,
-          },
-          {
-            key: "タイトル",
-            value: bookList[bookId - 1].title,
-            setValue: setTitle,
-          },
-          {
-            key: "著者",
-            value: bookList[bookId - 1].author,
-            setValue: setAuthor,
-          },
-          {
-            key: "価格(円)",
-            value: bookList[bookId - 1].price,
-            setValue: setPrice,
-          },
-          {
-            key: "ISINコード",
-            value: bookList[bookId - 1].isbnCode,
-            setValue: setIsbnCode,
-          },
-          {
-            key: "バージョン",
-            value: bookList[bookId - 1].version,
-            setValue: setVersion,
-          },
-        ]);
       });
   }, []);
+
+  const detailList = [
+    {
+      key: "bookId",
+      value: bookId2,
+      setValue: setBookId,
+    },
+    {
+      key: "タイトル",
+      value: title,
+      setValue: setTitle,
+    },
+    {
+      key: "著者",
+      value: author,
+      setValue: setAuthor,
+    },
+    {
+      key: "価格(円)",
+      value: price,
+      setValue: setPrice,
+    },
+    {
+      key: "ISINコード",
+      value: isbnCode,
+      setValue: setIsbnCode,
+    },
+    {
+      key: "バージョン",
+      value: version,
+      setValue: setVersion,
+    },
+  ];
 
   return (
     <>
