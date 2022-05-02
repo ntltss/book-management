@@ -1,3 +1,12 @@
+書籍管理システム
+
+書籍一覧を表示させるためには、あらかじめAPIを起動させておくこと
+※詳細は、ソルクWikiの蔵書管理システムを参照のこと
+「bookshelf-0.0.1-SNAPSHOT.jar」があるディレクトリで下記コマンドを実行することでAPIを起動できる
+java -jar bookshelf-0.0.1-SNAPSHOT.jar
+
+ログイン画面では、IDとPWに同じ値を設定することでログインできる
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
