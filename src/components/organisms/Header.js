@@ -61,7 +61,7 @@ const Header = () => {
     {
       title: "ログアウト",
       color: "error",
-      onClick: () => {},
+      to: `/`,
     },
   ];
 
